@@ -18,6 +18,7 @@ function Input(props) {
       </div>
       <div>
         <label htmlFor="word">What words do you want to redact</label>
+        <h4>Use a space to separate your words</h4>
         <input type="text" id="word" onChange={props.onChange} name="word" />
       </div>
       <div>
@@ -81,8 +82,16 @@ class App extends Component {
     e.preventDefault();
     const text = this.state.text;
     const word = this.state.word;
+
+    let wordReg = word.replaceAll(" ", "|");
+    console.log(wordReg);
+
     const char = this.state.char;
-    const result = text.replace(word, char);
+    let char4=`${char}${char}${char}${char}`
+
+    const RE = new RegExp(`\\b(${wordReg})\\b`, 'gi')
+    console.log(RE)
+    const result = text.replaceAll(RE, char4 );
     this.setState({redone: result});
   }
 

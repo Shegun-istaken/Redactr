@@ -38,3 +38,9 @@ input, textarea{
   width: 10%;
   align-self: center;
 }
+
+h4{
+  margin-top: 0;
+  font-weight:100;
+  font-size:0.9vw;;
+}
